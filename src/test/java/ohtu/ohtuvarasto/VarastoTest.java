@@ -65,4 +65,63 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void kayttokelvotonVarastoNollataan() {
+        Varasto huonoVarasto = new Varasto(-10);
+        assertEquals(0.0, huonoVarasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkusaldollinenTilavuusNollataan() {
+        Varasto huonoVarasto = new Varasto(-10, -5);
+        assertEquals(0.0, huonoVarasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenAlkusaldoNollataan() {
+        Varasto huonoVarasto = new Varasto(-10, -5);
+        assertEquals(0.0, huonoVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkusaldollinenVarastoToimii() {
+        Varasto saldollinenVarasto = new Varasto(10, 5);
+        assertEquals(10, saldollinenVarasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(5, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void saldollinenVarastoEiTaytyYli() {
+        Varasto saldollinenVarasto = new Varasto(5, 10);
+        assertEquals(5, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastonTayttaminenOnnistuu() {
+        Varasto saldollinenVarasto = new Varasto(10, 5);
+        saldollinenVarasto.lisaaVarastoon(-2);
+        assertEquals(5, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+        saldollinenVarasto.lisaaVarastoon(2);
+        assertEquals(7, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+        saldollinenVarasto.lisaaVarastoon(5);
+        assertEquals(10, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastostaOttaminenOnnistuu() {
+        Varasto saldollinenVarasto = new Varasto(10, 5);
+        saldollinenVarasto.otaVarastosta(-2);
+        assertEquals(5, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+        saldollinenVarasto.otaVarastosta(2);
+        assertEquals(3, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+        saldollinenVarasto.otaVarastosta(5);
+        assertEquals(0, saldollinenVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void merkkijonoesitysOnOikein() {
+        Varasto testivarasto = new Varasto(10, 5);
+        assertEquals("saldo = 5.0, vielä tilaa 5.0", testivarasto.toString());
+    }
+
 }
