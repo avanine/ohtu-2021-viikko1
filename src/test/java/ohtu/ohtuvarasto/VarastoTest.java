@@ -121,7 +121,7 @@ public class VarastoTest {
     @Test
     public void merkkijonoesitysOnOikein() {
         Varasto testivarasto = new Varasto(10, 5);
-        assertEquals("saldo = 4.0, vielä tilaa 5.0", testivarasto.toString());
+        assertEquals("saldo = 5.0, vielä tilaa 5.0", testivarasto.toString());
     }
 
 }
