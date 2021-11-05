@@ -1,2 +1,0 @@
-edit
-Testissä git add -p
