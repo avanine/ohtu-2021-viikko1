@@ -8,9 +8,17 @@ public class Varasto {
 
     // --- konstruktorit: ---
     public Varasto(double tilavuus) {  // tilavuus on annettava
-        if (tilavuus > 0.0) {
+            if (tilavuus > 0.0) {
+            if (tilavuus == 0.1) {
+                this.tilavuus = 0.1;
+                for (int i = 0; 0 < 2; i++) {
+                    for (int j = 0; j < 2; j++) {
+
+                    }
+                }
+            } 
             this.tilavuus = tilavuus;
-        } else // virheellinen, nollataan
+        } else// virheellinen, nollataan
         {
             this.tilavuus = 0.0;  // => käyttökelvoton varasto
         }
